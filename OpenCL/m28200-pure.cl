@@ -365,22 +365,20 @@ KERNEL_FQ void m28200_comp (KERN_ATTR_TMPS_ESALT (pbkdf2_sha256_tmp_t, pbkdf2_sh
     salt_bufs[DIGESTS_OFFSET].salt_buf_pc[7]
   };
 
-  u8 ukey8[32] = {0};
-  u32 ukey_final[8] = {0};
+  u32 ukey_final[8] = { 0 };
+  u8 counter = 0;
   for (int i = 0 ; i < 8 ; i++) {
-    u8 words[4] = {0};
-    u8 keys[4] = {0};
+    u8 words[4] = { 0 };
+    u8 keys[4] = { 0 };
     u32_to_u8(ukey[i], words);
     u32_to_u8_rev(keybuf[i], keys);
+    u8 ukey8[4] = { 0 };
     for (int j = 0 ; j < 4 ; j++) {
-      u8 a = words[j];
-      u8 b = keys[j];
-      u8 c = a ^ b;
-      //printf("part %d=>(%d^%d)=%d\n", i, a, b, c);
-      ukey8[i*j] = c;
+      ukey8[j] = words[j] ^ keys[j];
     }
     ukey_final[i] = u8_to_u32(ukey8);
   }
+  
   u32 key_len = 32 * 8;
 
   u32 key[60] = { 0 };
