@@ -366,17 +366,9 @@ KERNEL_FQ void m28200_comp (KERN_ATTR_TMPS_ESALT (pbkdf2_sha256_tmp_t, pbkdf2_sh
   };
 
   u32 ukey_final[8] = { 0 };
-  u8 counter = 0;
+
   for (int i = 0 ; i < 8 ; i++) {
-    u8 words[4] = { 0 };
-    u8 keys[4] = { 0 };
-    u32_to_u8(ukey[i], words);
-    u32_to_u8_rev(keybuf[i], keys);
-    u8 ukey8[4] = { 0 };
-    for (int j = 0 ; j < 4 ; j++) {
-      ukey8[j] = words[j] ^ keys[j];
-    }
-    ukey_final[i] = u8_to_u32(ukey8);
+    ukey_final[i] = ukey[i] ^ hc_swap32_S(keybuf[i]);
   }
   
   u32 key_len = 32 * 8;
