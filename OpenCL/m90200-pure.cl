@@ -109,7 +109,7 @@ void u32_to_u8_rev(const u32 u32, u8* u8) {
 }
 
 
-KERNEL_FQ void m28200_init (KERN_ATTR_TMPS_ESALT (pbkdf2_sha256_tmp_t, pbkdf2_sha256_aes_gcm_t))
+KERNEL_FQ void m90200_init (KERN_ATTR_TMPS_ESALT (pbkdf2_sha256_tmp_t, pbkdf2_sha256_aes_gcm_t))
 {
   /**
    * base
@@ -195,7 +195,7 @@ KERNEL_FQ void m28200_init (KERN_ATTR_TMPS_ESALT (pbkdf2_sha256_tmp_t, pbkdf2_sh
   }
 }
 
-KERNEL_FQ void m28200_loop (KERN_ATTR_TMPS_ESALT (pbkdf2_sha256_tmp_t, pbkdf2_sha256_aes_gcm_t))
+KERNEL_FQ void m90200_loop (KERN_ATTR_TMPS_ESALT (pbkdf2_sha256_tmp_t, pbkdf2_sha256_aes_gcm_t))
 {
   const u64 gid = get_global_id (0);
   if ((gid * VECT_SIZE) >= gid_max) return;
@@ -301,7 +301,7 @@ KERNEL_FQ void m28200_loop (KERN_ATTR_TMPS_ESALT (pbkdf2_sha256_tmp_t, pbkdf2_sh
   }
 }
 
-KERNEL_FQ void m28200_comp (KERN_ATTR_TMPS_ESALT (pbkdf2_sha256_tmp_t, pbkdf2_sha256_aes_gcm_t))
+KERNEL_FQ void m90200_comp (KERN_ATTR_TMPS_ESALT (pbkdf2_sha256_tmp_t, pbkdf2_sha256_aes_gcm_t))
 {
   const u64 gid = get_global_id (0);
   const u64 lid = get_local_id (0);

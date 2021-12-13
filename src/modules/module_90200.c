@@ -19,7 +19,7 @@ static const u32   DGST_POS3      = 3;
 static const u32   DGST_SIZE      = DGST_SIZE_4_4;
 static const u32   HASH_CATEGORY  = HASH_CATEGORY_CRYPTOCURRENCY_WALLET;
 static const char *HASH_NAME      = "1password, B5 sqlite";
-static const u64   KERN_TYPE      = 28200;
+static const u64   KERN_TYPE      = 90200;
 static const u32   OPTI_TYPE      = OPTI_TYPE_ZERO_BYTE
                                   | OPTI_TYPE_SLOW_HASH_SIMD_LOOP;
 static const u64   OPTS_TYPE      = OPTS_TYPE_PT_GENERATE_LE;
