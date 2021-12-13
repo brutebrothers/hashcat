@@ -27,13 +27,15 @@ RUN apt-get update && \
 
 WORKDIR /root
 
-ENV HASHCAT_VERSION        main
+#ENV HASHCAT_VERSION        v6.2.5
 ENV HASHCAT_UTILS_VERSION  v1.9
 ENV HCXTOOLS_VERSION       6.2.0
 ENV HCXDUMPTOOL_VERSION    6.2.0
 ENV HCXKEYS_VERSION        master
 
-RUN git clone https://github.com/brutebrothers/hashcat.git && cd hashcat && git checkout ${HASHCAT_VERSION} && make install -j4
+#RUN git clone https://github.com/brutebrothers/hashcat.git && cd hashcat && git checkout ${HASHCAT_VERSION} && make install -j4
+ADD . /root/hashcat
+RUN cd hashcat && make install -j4
 
 RUN git clone https://github.com/hashcat/hashcat-utils.git && cd hashcat-utils/src && git checkout ${HASHCAT_UTILS_VERSION} && make
 RUN ln -s /root/hashcat-utils/src/cap2hccapx.bin /usr/bin/cap2hccapx
